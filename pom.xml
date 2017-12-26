@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.coryphaei</groupId>
-    <artifactId>elasticsearch-query-parser</artifactId>
+    <artifactId>elasticsearch-query-builder</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
     <build>
