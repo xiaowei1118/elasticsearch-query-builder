@@ -1,0 +1,67 @@
+{
+  "index":"event",
+  "query_type":"bool_query",
+  "size":"${pageSize}",
+  "from":"${offset}",
+  "include_source": ["age"],
+  "sort":[
+    {
+      "field":"date_time",
+      "order":"desc"
+    }
+  ],
+  "bool_query":[
+    {
+      "bool_type":"filter",
+      "items":[
+        {
+          "terms_method":"term",
+          "value":"${is_success}",
+          "key":"is_success"
+        },
+        {
+          "terms_method":"range",
+          "range":"${date_time}",
+          "key":"date_time"
+        },
+        {
+          "terms_method":"term",
+          "value":"${id}}",
+          "key":"id"
+        }
+      ]
+    },
+    {
+      "bool_type":"must",
+      "items":[
+        {
+          "terms_method":"match",
+          "value":"${name}",
+          "key":"name"
+        }
+      ]
+    },
+    {
+      "bool_type":"must_not",
+      "items":[]
+    },
+    {
+      "bool_type":"should",
+      "items":[]
+    }
+  ],
+  "highlight":{
+    "fields": [
+          {
+            "field": "content",
+            "number_of_fragment": 2,
+            "no_match_size": 150
+          }
+     ],
+    "pre_tags":["<em>"],
+    "post_tags":["</em>"],
+    "tags_schema":"styled",
+    "order":"asc"
+  },
+  "type":"docs"
+}

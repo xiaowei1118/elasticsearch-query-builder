@@ -1,0 +1,239 @@
+{
+  "index": "user_portrait",
+  "type": "docs",
+  "from": "${from}",
+  "size": "10",
+  "query_type": "bool_query",
+  "include_source": ["name","age"],  //需要哪些字段
+  "exclude_source": ["sex"],  //排除哪些字段
+  "bool_query": [
+    {
+      "bool_type": "must",
+      "items": [
+        {
+          "value": "",
+          "key": "province_code",
+          "terms_method": "term" //term,terms,range,match
+        }
+      ]
+    }
+  ],
+  "terms_level_query": {
+    "terms_level_type": "terms_query",
+    "term_query": {
+      "value": "",
+      "key": "",
+      "boost": 2
+    },
+    "terms_query": {
+      "value": "[1,2]", //数组
+      "key": ""
+    },
+    "range_query": {
+      "key": "",
+      "range": "", //[,]
+      "boost": "",
+      "format": "",
+      "include_lower": true,
+      "include_upper": false
+    },
+    "exists_query": {
+      "key": ""
+    },
+    "prefix_query": {
+      "key": "",
+      "value": "",
+      "boost": 2.0
+    },
+    "wildcard_query": {//通配符匹配
+      "key": "",
+      "value": "",
+      "boost": 2.0
+    },
+    "regexp_query": {//正则匹配
+      "key": "",
+      "value": "",
+      "boost": 2.0
+    },
+    "ids_query": {
+      "type": "",
+      "values": ""
+    }
+  },
+  "text_query": {
+    "text_query_type": "match_query",
+    "match_query": {
+      "key": "",
+      "value": "this is a test",
+      "zero_terms_query": "all"//是否使用停词
+    },
+    "multi_match_query": {
+      "value": "",
+      "fields": "a^3,b", //在多个字段中搜索,可使用通配符,支持使用^表示权重,如^3表示三倍权重,
+      "type": "best_fields"//most_fields,cross_fields,phrase,phrase_prefix
+    },
+    "query_string": {
+      "value": "",
+      "fields": ""//数组
+    },
+    "simple_query_string": {
+      "value": "",
+      "fields": "", //数组
+      "default_operate": "and"
+    }
+  },
+  "match_all_query": {
+    "boost": 2.0
+  },
+  "aggregations": [
+    {
+      "aggregation_type": "avg",  //计算平均数
+      "name": "",
+      "field": ""
+    },
+    {
+      "aggregation_type": "terms",  //对字段的值进行聚合
+      "name": "",
+      "field": "",
+      "size": "${size.value}",
+      "sort": "asc",
+      "sort_by": "_count",
+      "sub_aggregations":{  //子聚合
+          "aggregation_type": "terms",
+          "name": "",
+          "field": "",
+          "size": "${size.value}",
+          "sort": "asc",
+          "sort_by": "_count"
+      }
+    },
+    {
+      "aggregation_type": "cardinality",  //基数统计
+      "name": "",
+      "field": ""
+    },
+    {
+      "aggregation_type": "extended_stats",
+      "name": "",
+      "field": "",
+      "missing_value": ""
+    },
+    {
+      "aggregation_type": "max",
+      "name": "",
+      "field": "",
+      "missing_value": ""
+    },
+    {
+      "aggregation_type": "min",
+      "name": "",
+      "field": "",
+      "missing_value": ""
+    },
+    {
+      "aggregation_type": "stats",
+      "name": "",
+      "field": "",
+      "missing_value": ""
+    },
+    {
+      "aggregation_type": "sum",
+      "name": "",
+      "field": "",
+      "missing_value": ""
+    },
+    {
+      "aggregation_type": "top_hits",
+      "name": "",
+      "sort_field": "",
+      "from": "",
+      "size": ""
+    },
+    {
+      "aggregation_type": "value_count",
+      "name": "",
+      "field": "",
+      "missing_value": ""
+    },
+    {
+      "aggregation_type": "range",
+      "name": "",
+      "field": "",
+      "range_list": [
+        {
+          "key": "",
+          "from": "",
+          "to": ""
+        }
+      ]
+    },
+    {
+      "aggregation_type": "missing",
+      "name": "",
+      "field": ""
+    },
+    {
+      "aggregation_type": "date_range",
+      "name": "",
+      "field": "",
+      "format": "",
+      "range_list": [
+        {
+          "key": "",
+          "from": "",
+          "to":""
+        }
+      ]
+    },
+    {
+      "aggregation_type": "ipv4_range",
+      "name": "",
+      "field": "",
+      "range_list":[
+        {
+          "key":"",
+          "from":"",
+          "to":""
+        }
+      ]
+    },
+    {
+      "aggregation_type": "date_histogram",
+      "name": "",
+      "field": "",
+      "format":"",
+      "time_zone":"",
+      "interval":"",
+      "offset":"asc",
+      "missing":""
+    }
+  ],
+  "highlight":{
+    "fields": [
+      {
+        "field": "content",
+        "number_of_fragment": 3,  //返回片段数最大值
+        "fragment_size": 150   //高亮字段的字符长度
+      }
+    ],
+    "pre_tags":[],
+    "post_tags":[],
+    "tags_schema":"", //styled
+    "order":"score"
+  }
+//  "post_filter":{
+//    "filter_method":"and",
+//    "items":[
+//      {
+//        "method": "term",
+//        "field": "",
+//        "value": ""
+//      },
+//      {
+//        "method": "term",
+//        "field": "",
+//        "value": ""
+//      }
+//    ]
+//  }
+}
