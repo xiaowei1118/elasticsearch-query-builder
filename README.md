@@ -1,11 +1,11 @@
 ### elasticsearch-query-builder
 #### Introduction
-`elasticsearch-query-builder` is used for building [elasticsearch](https://www.elastic.co) query DSL. if there are so many query conditions, you won't build so complex elasticsearch DSL link before, and a config file is just enough using `elasticsearch-query-builder`. I belive that it will help you make your code simple and easy-understand.
+`elasticsearch-query-builder` is used for building [elasticsearch](https://www.elastic.co) query DSL. if there are so many query conditions, you won't build so complex elasticsearch DSL like before, and a config file is just enough by using `elasticsearch-query-builder`. I believe that it will help you make your code simple and easy-understand.
 
 [中文文档](https://github.com/xiaowei1118/elasticsearch-query-builder/blob/master/README-CN.md)
 
 #### How to use it
-At the first of all,create a config file following `elasticsearch-query-builder` rules just like the sample below.It is a standard json file.
+At the first of all, create a config file following `elasticsearch-query-builder` rules just like the sample below. It is a standard json file.
 ```
 {
   "index": "user_portrait",
@@ -79,4 +79,4 @@ If it is a range query, the `JSON data` must be a string in `[a, b]` format, a a
 clone this project and execute 'mvn package' and just use it as a `jar` file.
 
 ## License
-elasticsearch-query-builder is available under the [MIT](https://www.opensource.org/licenses/mit-license.php) license. See the LICENSE file for more info.
+`elasticsearch-query-builder` is available under the [MIT](https://www.opensource.org/licenses/mit-license.php) license. See the LICENSE file for more info.
